@@ -13,6 +13,7 @@ def test_only_evens_return_value() -> None:
 def test_only_evens_input_value() -> None:
     """only_evens should not modify the original list, which is named input."""
     input: list[int] = [1, 2, 3, 4] # assigning a value to the input list.
+    only_evens(input) # calling the only_evens function.
     assert input == [1, 2, 3, 4] # checking to see that the input list is not modified in any way.
 
 def test_only_evens_edge_case() -> None:

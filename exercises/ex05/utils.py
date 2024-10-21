@@ -13,8 +13,12 @@ def only_evens(input: list[int]) -> list:
 def sub(inp: list[int], start: int, end: int) -> list:
     """This function generates a list which is a subset of its input list, and starts from the start index and ends at the end index in the parameter."""
     new: list[int] = [] # create a new empty list.
-    if len(inp) == 0: # if the input list is just [], return that.
-        return inp
+    if len(inp) == 0 or start >= len(inp) or end <= 0: # if the input list is just [], or if start is greater than the legnth of inp or if end is at most 0, return a new empty list.
+        return new
+    elif start < 0: # if start is less than 0, set it to 0.
+        start = 0
+    if end > len(inp) - 1: # if end is greater than the largest index, set it back to the largest index.
+        end = len(inp)
     for elem in range(start, end): # this for loop iterates through only the values at the chosen start and end indexes.
         new.append(inp[elem]) # it appends every value between these indexes to the new list.
     return new # finally, the new list is returned.

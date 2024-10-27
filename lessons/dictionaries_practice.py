@@ -20,3 +20,26 @@ if "Ken" in renters:
     renters.pop("Ken")
 
 print(renters)
+
+word: str = "yep"
+
+for x in word:
+    print(x)
+
+for x in range(0, len(word)):
+    print(word[x])
+
+a: str = "Orange"
+b: list[str] = ["Orange", "Wake", "Orange"]
+
+def find(interest: str, counties: list[str]) -> int:
+    """docstring"""
+    if len(counties) == 0:
+        return 0
+    count: int = 0
+    for x in counties:
+        if x == interest:
+            count += 1
+    return count
+
+print(find(a, b))

@@ -16,7 +16,7 @@ def invert(input_dict: dict[str, str]) -> dict[str, str]:
     return invert_input # return the new dictionary with swapped keys.
 
 
-def favorite_colors(fav_dict: dict[str, str]) -> str:
+def favorite_color(fav_dict: dict[str, str]) -> str:
     """Function that returns the most common favorite color."""
     color_counter: dict[str, int] = {} # set up an empty dictionary.
     count: int = 0 # create a counter variable.
@@ -40,18 +40,15 @@ def favorite_colors(fav_dict: dict[str, str]) -> str:
     return most # return the color with the most frequency.
 
 
-def count(values: list[str]) -> dict[str, int]:
-    """Function that returns a dictionary of the values and the number of times those values appeared in the input list."""
-    value_count_dict: dict[str, int] = {} # set up an empty dictionary that will take in values in the list and their frequency.
-    counter: int = 0 # set up a counter variable to count the frequency of an item in a list.
+def count(elements: list[str]) -> dict[str, int]:
+    """Function that returns a dictionary of the elements and the number of times those elements appeared in the input list."""
+    value_count_dict: dict[str, int] = {} # set up an empty dictionary that will take in elements in the list and their frequency.
 
-    for idx in range(0, len(values)): # loop through the input list.
-        if values[idx] in value_count_dict: # if the item in the input list is already in the dictionary,
-            counter += 1 # add one to the counter variable.
+    for idx in range(0, len(elements)): # loop through the input list.
+        if elements[idx] in value_count_dict: # if the element in the input list is already in the dictionary,
+            value_count_dict[elements[idx]] += 1 # add one to the value that is currently assigned to the key (which is the current element).
         else:
-            counter = 1 # if not, set the counter variable equal to one.
-        value_count_dict[values[idx]] = counter # assign the current element in the list to a key in the new dictionary, 
-        # and assign that key to the counter variable (which keeps track of the element's frequency in the list).
+            value_count_dict[elements[idx]] = 1 # if element in the input list is not already in the dictionary, set the value to 1.
     
     return value_count_dict # return the dictionary containing the elements in the list and the number of times those elements appeared.
 
@@ -73,7 +70,8 @@ def update_attendance(day_att: dict[str, list[str]], day: str, student: str) -> 
     """Function that updates an attendance dictionary to include the new information that was passed."""
     
     if day in day_att: # check to see if the given day is already in the dictionary.
-        day_att[day].append(student) # if it is, just append the given student to the list of values that is already present for that day.
+        if student not in day_att[day]: # check to see if the student is not already mentioned.
+            day_att[day].append(student) # if the student is not already mentioned, append the student to the list (value) that corresponds with the day (key).
     else: # if the given day is not already in the dictionary,
         day_att[day] = list() # add the given day to the dictionary and assign an empty list to that day.
         day_att[day].append(student) # then, append the student's name to that list.

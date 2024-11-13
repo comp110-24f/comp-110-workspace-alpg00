@@ -1,4 +1,4 @@
-from lessons.unit_tests.lists_fns import get_first, remove_first, get_and_remove_first
+from lessons.unit_tests.lists_fns import get_first, remove_first
 
 def test_get_first() -> None:
     """get_first should return first element."""
